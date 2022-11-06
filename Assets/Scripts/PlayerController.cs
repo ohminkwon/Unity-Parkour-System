@@ -52,8 +52,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveInput = (new Vector3(h, 0, v)).normalized;
         Vector3 moveDir = cameraController.PlanarRotation * moveInput;
 
-        GroundCheck(); // To alternate a bug of chracterController.isGrounded 
-        Debug.Log($"IsGrounded = {isGrounded}");
+        GroundCheck(); // To alternate a bug of chracterController.isGrounded       
 
         if (isGrounded)        
             ySpeed = -0.5f;        
