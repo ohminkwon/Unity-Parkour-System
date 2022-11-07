@@ -26,6 +26,7 @@
     * Breathing Idle
     * Standard Walk
     * Running
+    * StepUp
 
 ## References
 * https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526

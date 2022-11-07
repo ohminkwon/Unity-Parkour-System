@@ -12,6 +12,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MousePos { get; private set; }
     public float MouseScrollY { get; private set; }
 
+    public bool IsJumping { get; private set; }
+
     public event Action OnJumpEvent;
 
     private void Start()
@@ -29,10 +31,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!context.performed)
-            return;
+        //if (!context.performed)
+        //    return;
+        //OnJumpEvent?.Invoke();
 
-        OnJumpEvent?.Invoke();
+        if (context.performed)
+            IsJumping = true;
+        else if (context.canceled)
+            IsJumping = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)

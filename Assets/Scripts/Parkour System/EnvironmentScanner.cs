@@ -11,7 +11,7 @@ public class EnvironmentScanner : MonoBehaviour
 
     public ObstacleHitData ObstacleCheck()
     {
-        ObstacleHitData hitData = new ObstacleHitData();
+        var hitData = new ObstacleHitData();
 
         var forwardOrigin = transform.position + forwardRayOffset;
         hitData.forwardHitFound = Physics.Raycast(forwardOrigin, transform.forward, out hitData.forwardHit, forwardRayLength, obstacleLayer);

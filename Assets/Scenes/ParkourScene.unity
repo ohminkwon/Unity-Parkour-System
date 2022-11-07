@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardRayOffset: {x: 0, y: 0.25, z: 0}
   forwardRayLength: 0.8
+  heightRayLength: 5
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -260,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3ebfbbf18755c4bb81c5d6af694347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <InputReader>k__BackingField: {fileID: 104678519}
 --- !u!1 &138594875
 GameObject:
   m_ObjectHideFlags: 0

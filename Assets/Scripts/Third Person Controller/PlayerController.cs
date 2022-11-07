@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
 
     private bool isGrounded;
+    private bool hasControl = true;
+
     private float ySpeed;
 
     private void Awake()
@@ -52,7 +54,10 @@ public class PlayerController : MonoBehaviour
         Vector3 moveInput = (new Vector3(h, 0, v)).normalized;
         Vector3 moveDir = cameraController.PlanarRotation * moveInput;
 
-        GroundCheck(); // To alternate a bug of chracterController.isGrounded       
+        if (!hasControl)
+            return;        
+
+        GroundCheck();    
 
         if (isGrounded)        
             ySpeed = -0.5f;        
@@ -75,9 +80,22 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat(MOVE_AMOUNT_HASH, moveAmount, ANIM_DAMP_TIME, Time.deltaTime);
     }
 
+    // To alternate a bug of chracterController.isGrounded
     private void GroundCheck()
     {
         isGrounded = Physics.CheckSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius, groundLayer);
+    }
+
+    public void SetControl(bool hasControl)
+    {
+        this.hasControl = hasControl;
+        characterController.enabled = hasControl;
+
+        if (!hasControl)
+        {
+            animator.SetFloat(MOVE_AMOUNT_HASH, 0f);
+            targetRotation = transform.rotation;
+        }
     }
 
     private void OnDrawGizmosSelected()
