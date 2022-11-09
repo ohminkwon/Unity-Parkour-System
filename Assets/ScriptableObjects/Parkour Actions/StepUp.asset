@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4b0a4b342650743b01e24c44d0e4b7, type: 3}
   m_Name: StepUp
   m_EditorClassIdentifier: 
-  <AnimName>k__BackingField: StepUp
+  animName: StepUp
   minHeight: 0.3
   maxHeight: 0.8
+  canRotateToObstacle: 1
+  enableTargetMatching: 1
+  matchBodyPart: 3
+  matchStartTime: 0.3
+  matchTargetTime: 0.51

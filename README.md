@@ -20,6 +20,12 @@
 ## Root motion & Animations CrossFade
 애니메이션간의 전환상태에 이상이 생길 수 있기에 비슷한 프레임으로 유지하거나 exit time을 조정해야 한다.
 
+## Target Matching
+* EnableTargetMatching : 타겟매칭 애니메이션을 적용할지 말지 선택
+* matchBodyPart : 타겟매칭을 적용시킬 부위 선택 (루트-몸통-(왼/오)팔-(왼/오)다리)
+* matchStartTime : 타겟 매칭이 시작될 프레임, %로 적용 `(예. 31% 지점 -> 0.31)`
+* matchTargetTime : 타겟 매칭이 적용될 프레임, %로 적용 `(예. 51% 지점 -> 0.31)`
+
 ## Resources from
 
 * Mixamo
@@ -30,7 +36,7 @@
     * Standard Walk
     * Running
     * StepUp
-    * JumpUp
+    * JumpUp (Running Jump)
 
 ## References
 * https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526

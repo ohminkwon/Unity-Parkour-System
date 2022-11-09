@@ -46,6 +46,7 @@ public class ParkourController : MonoBehaviour
         animator.CrossFade(action.AnimName, 0.2f);
         yield return null; // wait for the end of a frame
 
+        // Check animation name is same with action data
         var animState = animator.GetNextAnimatorStateInfo(0);
         if (!animState.IsName(action.AnimName))
             Debug.Log("The parkour animation name is different with data");      
@@ -55,13 +56,27 @@ public class ParkourController : MonoBehaviour
         {
             timer += Time.deltaTime;
 
+            // Rotate player towards obstacle while action animation is playing
             if (action.CanRotateToObstacle)
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, action.TargetRotation, playerController.RotationSpeed * Time.deltaTime);
+
+            // Target Matching
+            if (action.EnableTargetMatching)
+                MatchTarget(action);
 
             yield return null;
         }
 
         playerController.SetControl(true);
         inAction = false;        
+    }
+
+    private void MatchTarget(ParkourAction action)
+    {
+        if (animator.isMatchingTarget)
+            return;
+        
+        animator.MatchTarget(action.MatchPos, transform.rotation, action.MatchBodyPart, 
+            new MatchTargetWeightMask(new Vector3(0, 1, 0), 0), action.MatchStartTime, action.MatchTargetTime);
     }
 }

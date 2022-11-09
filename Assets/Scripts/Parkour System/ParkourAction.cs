@@ -5,13 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Parkour System/New parkour action")]
 public class ParkourAction : ScriptableObject
 {
-    [field: SerializeField] public string AnimName { get; private set; }
-    [field: SerializeField] public bool CanRotateToObstacle { get; private set; }
+    [SerializeField] private string animName;
+    [SerializeField] private float minHeight;
+    [SerializeField] private float maxHeight;
 
-    [SerializeField] float minHeight;
-    [SerializeField] float maxHeight;
+    [SerializeField] private bool canRotateToObstacle;
 
-    public Quaternion TargetRotation { get; set; }
+    [Header("Target Matching Settings")]
+    [SerializeField] private bool enableTargetMatching = true;
+    [SerializeField] private AvatarTarget matchBodyPart;
+    [SerializeField] private float matchStartTime;
+    [SerializeField] private float matchTargetTime;
+
+    public Quaternion TargetRotation { get; private set; }
+    public Vector3 MatchPos { get; private set; }
 
     public bool CheckIfpossible(ObstacleHitData hitData, Transform player)
     {
@@ -24,7 +31,17 @@ public class ParkourAction : ScriptableObject
         if (CanRotateToObstacle)
             TargetRotation = Quaternion.LookRotation(-hitData.forwardHit.normal);
 
+        if (enableTargetMatching)
+            MatchPos = hitData.heightHit.point;
 
         return true;
     }
+
+    // properties
+    public string AnimName => animName;
+    public bool CanRotateToObstacle => canRotateToObstacle;
+    public bool EnableTargetMatching => enableTargetMatching;
+    public AvatarTarget MatchBodyPart => matchBodyPart;
+    public float MatchStartTime => matchStartTime;
+    public float MatchTargetTime => matchTargetTime;
 }
