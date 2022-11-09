@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5f64f75db4109c74d9f310a7753eee73
+guid: 75a9abbcbb68ca1408287672c25ed35f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Breathing Idle
+    second: JumpUp
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -20,7 +20,14 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
+      : position error = 20.449234 mm\n\t'mixamorig:LeftLeg' : position error = 26.278799
+      mm\n\t'mixamorig:LeftFoot' : position error = 74.816765 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 29.489498 mm\n\t'mixamorig:RightUpLeg' : position error
+      = 21.039745 mm\n\t'mixamorig:RightLeg' : position error = 26.452583 mm\n\t'mixamorig:RightFoot'
+      : position error = 74.620605 mm\n\t'mixamorig:RightToeBase' : position error
+      = 29.519102 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -36,25 +43,25 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Breathing Idle
+      name: JumpUp
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
-      lastFrame: 60
+      firstFrame: 8
+      lastFrame: 47
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

@@ -14,7 +14,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public bool IsJumping { get; private set; }
 
-    public event Action OnJumpEvent;
+    //public event Action OnJumpEvent;
 
     private void Start()
     {

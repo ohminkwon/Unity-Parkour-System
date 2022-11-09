@@ -27,6 +27,7 @@
     * Standard Walk
     * Running
     * StepUp
+    * JumpUp
 
 ## References
 * https://assetstore.unity.com/packages/essentials/starter-assets-third-person-character-controller-196526

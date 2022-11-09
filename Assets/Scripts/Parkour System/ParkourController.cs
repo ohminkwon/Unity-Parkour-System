@@ -4,42 +4,51 @@ using UnityEngine;
 
 public class ParkourController : MonoBehaviour
 {
-    [field: SerializeField] public InputReader InputReader { get; private set; }
+    [SerializeField] List<ParkourAction> parkourActions;
 
     private EnvironmentScanner environmentScanner;
     private PlayerController playerController;
     private Animator animator;
 
-    private bool inAction;
+    private bool inAction = false;
 
     private void Awake()
-    {
+    {   
         environmentScanner = GetComponent<EnvironmentScanner>();
         playerController = GetComponent<PlayerController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();        
     }
 
     private void Update()
-    {
-        if (InputReader.IsJumping && !inAction)
+    {        
+        if (playerController.InputReader.IsJumping && !inAction)
         {
             var hitData = environmentScanner.ObstacleCheck();
             if (hitData.forwardHitFound)
             {
-                StartCoroutine(DoParkourAction());
+                foreach (var action in parkourActions)
+                {
+                    if(action.CheckIfpossible(hitData, transform))
+                    {
+                        StartCoroutine(DoParkourAction(action));
+                        break;
+                    }
+                }                
             }
         }        
     }
 
-    IEnumerator DoParkourAction()
+    IEnumerator DoParkourAction(ParkourAction action)
     {
         inAction = true;
         playerController.SetControl(false);
 
-        animator.CrossFade("StepUp", 0.2f);
+        animator.CrossFade(action.AnimName, 0.2f);
         yield return null; // wait for the end of a frame
 
         var animState = animator.GetNextAnimatorStateInfo(0);
+        if (!animState.IsName(action.AnimName))
+            Debug.Log("The parkour animation name is different with data");
 
         yield return new WaitForSeconds(animState.length);
 
