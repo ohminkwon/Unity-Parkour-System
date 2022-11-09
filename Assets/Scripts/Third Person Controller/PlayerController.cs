@@ -103,4 +103,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = new Color(0, 1, 0, 0.8f); // Green + alpha value
         Gizmos.DrawSphere(transform.TransformPoint(groundCheckOffset), groundCheckRadius);
     }
+
+    public float RotationSpeed => rotationSpeed;
 }
